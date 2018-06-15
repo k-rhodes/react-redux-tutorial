@@ -1,10 +1,15 @@
-import _ from 'lodash';
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import todoApp from './reducers'
+import App from './components/App'
 
-function component() {
-    var element = document.createElement('div');
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+const store = createStore(todoApp)
 
-    return element;
-}
-
-document.body.appendChild(component());
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
